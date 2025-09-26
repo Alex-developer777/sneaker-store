@@ -10,6 +10,9 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f8f8f8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -113,24 +116,33 @@ body {
 
 /* Баннер */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/sneakers.jpg') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/background.jpg') center/cover;
     color: white;
     text-align: center;
     padding: 80px 20px;
-    height: 400px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero .btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 /* Слайдер */
@@ -394,13 +406,204 @@ body {
     100% { transform: scale(1); }
 }
 
+/* Кнопка из Uiverse.io */
+.button {
+  all: unset;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+  border-radius: 100em;
+  background-color: rgba(0, 0, 0, 0.75);
+  box-shadow:
+    -0.15em -0.15em 0.15em -0.075em rgba(5, 5, 5, 0.25),
+    0.0375em 0.0375em 0.0675em 0 rgba(5, 5, 5, 0.1);
+  display: inline-block;
+  margin: 10px 5px;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: calc(100% + 0.3em);
+  height: calc(100% + 0.3em);
+  top: -0.15em;
+  left: -0.15em;
+  border-radius: inherit;
+  background: linear-gradient(
+    -135deg,
+    rgba(5, 5, 5, 0.5),
+    transparent 20%,
+    transparent 100%
+  );
+  filter: blur(0.0125em);
+  opacity: 0.25;
+  mix-blend-mode: multiply;
+}
+
+.button .button-outer {
+  position: relative;
+  z-index: 1;
+  border-radius: inherit;
+  transition: box-shadow 300ms ease;
+  will-change: box-shadow;
+  box-shadow:
+    0 0.05em 0.05em -0.01em rgba(5, 5, 5, 1),
+    0 0.01em 0.01em -0.01em rgba(5, 5, 5, 0.5),
+    0.15em 0.3em 0.1em -0.01em rgba(5, 5, 5, 0.25);
+}
+
+.button:hover .button-outer {
+  box-shadow:
+    0 0 0 0 rgba(5, 5, 5, 1),
+    0 0 0 0 rgba(5, 5, 5, 0.5),
+    0 0 0 0 rgba(5, 5, 5, 0.25);
+}
+
+.button-inner {
+  --inset: 0.035em;
+  position: relative;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1em 1.5em;
+  background-image: linear-gradient(
+    135deg,
+    rgba(230, 230, 230, 1),
+    rgba(180, 180, 180, 1)
+  );
+  transition:
+    box-shadow 300ms ease,
+    clip-path 250ms ease,
+    background-image 250ms ease,
+    transform 250ms ease;
+  will-change: box-shadow, clip-path, background-image, transform;
+  overflow: clip;
+  clip-path: inset(0 0 0 0 round 100em);
+  box-shadow:
+        /* 1 */
+    0 0 0 0 inset rgba(5, 5, 5, 0.1),
+    /* 2 */ -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25),
+    /* 3 */ 0 0 0 0 inset rgba(5, 5, 5, 0.1),
+    /* 4 */ 0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25),
+    /* 5 */ 0.025em 0.05em 0.1em 0 inset rgba(255, 255, 255, 1),
+    /* 6 */ 0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+    /* 7 */ -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
+}
+
+.button:hover .button-inner {
+  clip-path: inset(
+    clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px)
+      clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 100em
+  );
+  box-shadow:
+        /* 1 */
+    0.1em 0.15em 0.05em 0 inset rgba(5, 5, 5, 0.75),
+    /* 2 */ -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5),
+    /* 3 */ 0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5),
+    /* 4 */ 0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15),
+    /* 5 */ 0 0 0 0 inset rgba(255, 255, 255, 1),
+    /* 6 */ 0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+    /* 7 */ -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
+}
+
+.button .button-inner span {
+  position: relative;
+  z-index: 4;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(
+    135deg,
+    rgba(25, 25, 25, 1),
+    rgba(75, 75, 75, 1)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: transform 250ms ease;
+  display: block;
+  will-change: transform;
+  text-shadow: rgba(0, 0, 0, 0.1) 0 0 0.1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.button:hover .button-inner span {
+  transform: scale(0.975);
+}
+
+.button:active .button-inner {
+  transform: scale(0.975);
+}
+
+/* Customize the label (the container) */
+.container {
+ display: block;
+ position: relative;
+ cursor: pointer;
+ font-size: 16px;
+ user-select: none;
+ margin: 8px 0;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  height: 25px;
+  width: 25px;
+  background-color: #ccc;
+  border: solid gray 1px;
+  border-radius: 4px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #666666;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 0.4rem;
+  top: 0.2rem;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
 /* Футер */
 .footer {
     background: #333;
     color: white;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
+    padding: 10px 0; /* Уменьшили отступы */
+    margin-top: auto; /* Прижимаем к низу */
 }
 
 /* Адаптивность */

@@ -39,17 +39,34 @@
                     <input type="range" min="5000" max="30000" value="30000" id="price-filter">
                     <span id="price-value">До ₽30 000</span>
                 </label>
-                <label>Бренд:
-                    <select id="brand-filter">
-                        <option value="">Все бренды</option>
-                        <option value="Nike">Nike</option>
-                        <option value="Adidas">Adidas</option>
-                        <option value="Puma">Puma</option>
-                        <option value="Jordan">Jordan</option>
-                        <option value="New Balance">New Balance</option>
-                        <option value="Yeezy">Yeezy</option>
-                    </select>
-                </label>
+                <label>Бренды:</label>
+                <div class="brand-checkboxes">
+                    <label class="container">
+                        Все
+                        <input type="checkbox" value="" id="brand-all" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        Nike
+                        <input type="checkbox" value="Nike" id="brand-nike">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        Adidas
+                        <input type="checkbox" value="Adidas" id="brand-adidas">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        Puma
+                        <input type="checkbox" value="Puma" id="brand-puma">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        Jordan
+                        <input type="checkbox" value="Jordan" id="brand-jordan">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
                 <label>Сортировка:
                     <select id="sort-filter">
                         <option value="name">По названию</option>
@@ -57,6 +74,24 @@
                         <option value="price-desc">Цена: по убыванию</option>
                     </select>
                 </label>
+            </div>
+
+            <!-- Кнопки для каталога -->
+            <div style="text-align: center; margin: 20px 0;">
+                <div class="button" onclick="addToCart({id: 1, name: 'Nike Air Max 270', price: 12999})">
+                    <div class="button-outer">
+                        <div class="button-inner">
+                            <span>В корзину</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="button" onclick="quickCheckout({id: 1, name: 'Nike Air Max 270', price: 12999})">
+                    <div class="button-outer">
+                        <div class="button-inner">
+                            <span>Купить сейчас</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="products-grid" id="products-list">

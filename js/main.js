@@ -88,12 +88,20 @@ const products = [
 function renderProducts(filter = {}) {
     const list = document.getElementById('products-list');
     const maxPrice = filter.price || 30000;
-    const brand = filter.brand || '';
     const sortBy = filter.sortBy || 'name';
 
     list.innerHTML = '';
 
-    let filtered = products.filter(p => p.price <= maxPrice && (brand === '' || p.brand === brand));
+    let filtered = products.filter(p => p.price <= maxPrice);
+
+    // Фильтрация по чекбоксам
+    const checkedBrands = Array.from(document.querySelectorAll('.brand-checkboxes input:checked'))
+                               .map(cb => cb.value)
+                               .filter(v => v !== '');
+
+    if (checkedBrands.length > 0) {
+        filtered = filtered.filter(p => checkedBrands.includes(p.brand));
+    }
 
     // Сортировка
     if (sortBy === 'price-asc') {
@@ -279,24 +287,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Фильтры в каталоге
     const priceFilter = document.getElementById('price-filter');
-    const brandFilter = document.getElementById('brand-filter');
     const sortFilter = document.getElementById('sort-filter');
     const priceValue = document.getElementById('price-value');
 
-    if (priceFilter && brandFilter) {
+    if (priceFilter) {
         priceFilter.addEventListener('input', function () {
             priceValue.textContent = `До ₽${this.value}`;
-            renderProducts({ price: this.value, brand: brandFilter.value, sortBy: sortFilter.value });
-        });
-
-        brandFilter.addEventListener('change', function () {
-            renderProducts({ price: priceFilter.value, brand: this.value, sortBy: sortFilter.value });
-        });
-
-        sortFilter && sortFilter.addEventListener('change', function () {
-            renderProducts({ price: priceFilter.value, brand: brandFilter.value, sortBy: this.value });
+            renderProducts({ price: this.value, sortBy: sortFilter.value });
         });
     }
+
+    if (sortFilter) {
+        sortFilter.addEventListener('change', function () {
+            renderProducts({ price: priceFilter.value, sortBy: this.value });
+        });
+    }
+
+    // Обработчики чекбоксов
+    document.querySelectorAll('.brand-checkboxes input').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            renderProducts({
+                price: document.getElementById('price-filter').value,
+                sortBy: document.getElementById('sort-filter').value
+            });
+        });
+    });
 
     // Запуск отображения товаров
     renderProducts();
