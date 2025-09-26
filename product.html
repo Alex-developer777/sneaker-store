@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Air Max 270 | SNEAKER STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">SNEAKER STORE</div>
+            <nav class="nav" id="nav-menu">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="cart.html">Корзина <span id="cart-count">0</span></a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Nike Air Max 270</h1>
+            <p>Идеальный выбор для повседневной носки и спорта</p>
+        </div>
+    </section>
+
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-layout">
+                <div class="product-image">
+                    <img src="images/sneakers.jpg" alt="Nike Air Max 270">
+                </div>
+                <div class="product-info">
+                    <h2>Nike Air Max 270</h2>
+                    <p class="price">₽12 999</p>
+                    <p>Цвет: Белый/Черный</p>
+                    <p>Размеры: 39–45</p>
+                    <p>Материал: Верх — текстиль, подошва — резина</p>
+                    <p>Особенности: Воздушная подушка Air Max, легкий вес, отличная амортизация</p>
+                    <button class="btn" onclick="addToCart({id: 1, name: 'Nike Air Max 270', price: 12999})">Добавить в корзину</button>
+                    <button class="btn" style="margin-left: 10px;" onclick="quickCheckout({id: 1, name: 'Nike Air Max 270', price: 12999})">Купить сейчас</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <!-- Содержимое модального окна будет подгружаться через JS -->
+        </div>
+    </div>
+
+    <!-- Модальное окно быстрого оформления -->
+    <div class="quick-checkout-modal" id="quick-checkout-modal">
+        <div class="quick-checkout-content">
+            <!-- Содержимое быстрого оформления -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SNEAKER STORE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

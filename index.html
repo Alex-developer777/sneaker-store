@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кроссовки | Лучшие модели 2025</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="images/icon-192.png">
+    <meta name="theme-color" content="#007bff">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">SNEAKER STORE</div>
+            <nav class="nav" id="nav-menu">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="cart.html">Корзина <span id="cart-count">0</span></a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Слайдер -->
+    <section class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="images/sneakers.jpg" alt="Слайд 1"></div>
+            <div class="slide"><img src="images/sneakers.jpg" alt="Слайд 2"></div>
+            <div class="slide"><img src="images/sneakers.jpg" alt="Слайд 3"></div>
+        </div>
+        <button class="slider-btn prev" onclick="prevSlide()">&#10094;</button>
+        <button class="slider-btn next" onclick="nextSlide()">&#10095;</button>
+    </section>
+
+    <!-- Новинки -->
+    <section class="featured">
+        <div class="container">
+            <h2>Популярные модели</h2>
+            <div class="products-grid">
+                <div class="product-card" onclick="openProductModal({id: 1, name: 'Nike Air Max 270', price: 12999, brand: 'Nike', image: 'images/sneakers.jpg', sizes: [39,40,41,42,43,44,45]})">
+                    <img src="images/sneakers.jpg" alt="Кроссовки Nike Air Max">
+                    <h3>Nike Air Max 270</h3>
+                    <p class="price">₽12 999</p>
+                    <button class="btn-sm" onclick="event.stopPropagation(); addToCart({id: 1, name: 'Nike Air Max 270', price: 12999})">В корзину</button>
+                    <button class="btn-sm" onclick="event.stopPropagation(); quickCheckout({id: 1, name: 'Nike Air Max 270', price: 12999})">Купить сейчас</button>
+                </div>
+                <div class="product-card" onclick="openProductModal({id: 2, name: 'Adidas Ultraboost 24', price: 14499, brand: 'Adidas', image: 'images/sneakers.jpg', sizes: [38,39,40,41,42,43,44]})">
+                    <img src="images/sneakers.jpg" alt="Кроссовки Adidas Ultraboost">
+                    <h3>Adidas Ultraboost 24</h3>
+                    <p class="price">₽14 499</p>
+                    <button class="btn-sm" onclick="event.stopPropagation(); addToCart({id: 2, name: 'Adidas Ultraboost 24', price: 14499})">В корзину</button>
+                    <button class="btn-sm" onclick="event.stopPropagation(); quickCheckout({id: 2, name: 'Adidas Ultraboost 24', price: 14499})">Купить сейчас</button>
+                </div>
+                <div class="product-card" onclick="openProductModal({id: 3, name: 'Puma RS-X', price: 8999, brand: 'Puma', image: 'images/sneakers.jpg', sizes: [37,38,39,40,41,42,43]})">
+                    <img src="images/sneakers.jpg" alt="Кроссовки Puma RS-X">
+                    <h3>Puma RS-X</h3>
+                    <p class="price">₽8 999</p>
+                    <button class="btn-sm" onclick="event.stopPropagation(); addToCart({id: 3, name: 'Puma RS-X', price: 8999})">В корзину</button>
+                    <button class="btn-sm" onclick="event.stopPropagation(); quickCheckout({id: 3, name: 'Puma RS-X', price: 8999})">Купить сейчас</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <!-- Содержимое модального окна будет подгружаться через JS -->
+        </div>
+    </div>
+
+    <!-- Модальное окно быстрого оформления -->
+    <div class="quick-checkout-modal" id="quick-checkout-modal">
+        <div class="quick-checkout-content">
+            <!-- Содержимое быстрого оформления -->
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SNEAKER STORE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>

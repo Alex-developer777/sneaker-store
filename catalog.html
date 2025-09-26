@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог кроссовок | SNEAKER STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">SNEAKER STORE</div>
+            <nav class="nav" id="nav-menu">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="cart.html">Корзина <span id="cart-count">0</span></a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Каталог кроссовок</h1>
+            <p>Выберите свою идеальную пару</p>
+        </div>
+    </section>
+
+    <section class="catalog">
+        <div class="container">
+            <div class="filters">
+                <h3>Фильтры</h3>
+                <label>Цена:
+                    <input type="range" min="5000" max="30000" value="30000" id="price-filter">
+                    <span id="price-value">До ₽30 000</span>
+                </label>
+                <label>Бренд:
+                    <select id="brand-filter">
+                        <option value="">Все бренды</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Puma">Puma</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="New Balance">New Balance</option>
+                        <option value="Yeezy">Yeezy</option>
+                    </select>
+                </label>
+                <label>Сортировка:
+                    <select id="sort-filter">
+                        <option value="name">По названию</option>
+                        <option value="price-asc">Цена: по возрастанию</option>
+                        <option value="price-desc">Цена: по убыванию</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="products-grid" id="products-list">
+                <!-- Товары будут подгружаться динамически -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <!-- Содержимое модального окна будет подгружаться через JS -->
+        </div>
+    </div>
+
+    <!-- Модальное окно быстрого оформления -->
+    <div class="quick-checkout-modal" id="quick-checkout-modal">
+        <div class="quick-checkout-content">
+            <!-- Содержимое быстрого оформления -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SNEAKER STORE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

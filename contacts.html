@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | SNEAKER STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">SNEAKER STORE</div>
+            <nav class="nav" id="nav-menu">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="cart.html">Корзина <span id="cart-count">0</span></a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Связаться с нами</h1>
+            <p>Мы всегда рады помочь вам</p>
+        </div>
+    </section>
+
+    <section class="contacts">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Наши контакты</h2>
+                    <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+                    <p><strong>Email:</strong> info@sneakerstore.ru</p>
+                    <p><strong>Адрес:</strong> г. Москва, ул. Спортивная, д. 15</p>
+                    <p><strong>Часы работы:</strong> Пн–Пт: 9:00–20:00, Сб–Вс: 10:00–18:00</p>
+                </div>
+                <div class="contact-form">
+                    <h2>Напишите нам</h2>
+                    <form id="contact-form">
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="email" placeholder="Ваш email" required>
+                        <textarea placeholder="Сообщение" rows="5" required></textarea>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SNEAKER STORE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Сообщение отправлено!');
+            this.reset();
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
