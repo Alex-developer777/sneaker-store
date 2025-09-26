@@ -16,4 +16,4 @@ Responsive e-commerce landing page for a sneaker shop, built with HTML, CSS, and
 ## 📥 How to run locally
 1. Clone the repo:
    ```bash
-   git clone https://github.com/ваш-логин/sneaker-store.git
+   git clone https://github.com/Alex-developer777/sneaker-store.git
