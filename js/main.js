@@ -21,8 +21,10 @@ function addToCart(product) {
     updateCart();
     // Анимация
     const btn = event.target;
-    btn.classList.add('added-to-cart');
-    setTimeout(() => btn.classList.remove('added-to-cart'), 500);
+    if (btn) {
+        btn.classList.add('added-to-cart');
+        setTimeout(() => btn.classList.remove('added-to-cart'), 500);
+    }
     alert(`Товар "${product.name}" добавлен в корзину!`);
 }
 
@@ -50,13 +52,23 @@ function renderCart() {
         const itemEl = document.createElement('div');
         itemEl.classList.add('cart-item');
         itemEl.innerHTML = `
-            <h3>${item.name}</h3>
+            <h3>${escapeHtml(item.name)}</h3>
             <p>Цена: ₽${item.price}</p>
             <p>Количество: ${item.quantity}</p>
             <button onclick="removeFromCart(${item.id})">Удалить</button>
         `;
         cartContainer.appendChild(itemEl);
     });
+}
+
+// Экранирование HTML для безопасности
+function escapeHtml(unsafe) {
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "<")
+        .replace(/>/g, ">")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 // Статистика
@@ -90,6 +102,8 @@ function renderProducts(filter = {}) {
     const maxPrice = filter.price || 30000;
     const sortBy = filter.sortBy || 'name';
 
+    if (!list) return;
+
     list.innerHTML = '';
 
     let filtered = products.filter(p => p.price <= maxPrice);
@@ -117,11 +131,11 @@ function renderProducts(filter = {}) {
         card.classList.add('product-card');
         card.onclick = () => openProductModal(p);
         card.innerHTML = `
-            <img src="${p.image}" alt="${p.name}">
-            <h3>${p.name}</h3>
+            <img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.name)}">
+            <h3>${escapeHtml(p.name)}</h3>
             <p class="price">₽${p.price}</p>
-            <button class="btn-sm" onclick="event.stopPropagation(); addToCart({id: ${p.id}, name: '${p.name}', price: ${p.price}})">В корзину</button>
-            <button class="btn-sm" onclick="event.stopPropagation(); quickCheckout({id: ${p.id}, name: '${p.name}', price: ${p.price}})">Купить сейчас</button>
+            <button class="btn-sm" onclick="event.stopPropagation(); addToCart({id: ${p.id}, name: '${escapeHtml(p.name)}', price: ${p.price}})">В корзину</button>
+            <button class="btn-sm" onclick="event.stopPropagation(); quickCheckout({id: ${p.id}, name: '${escapeHtml(p.name)}', price: ${p.price}})">Купить сейчас</button>
         `;
         list.appendChild(card);
     });
@@ -133,13 +147,13 @@ function openProductModal(product) {
     const content = document.querySelector('.modal-content');
     content.innerHTML = `
         <span class="close-modal" onclick="closeProductModal()">&times;</span>
-        <img src="${product.image}" alt="${product.name}" style="width: 100%;">
-        <h2>${product.name}</h2>
+        <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" style="width: 100%;">
+        <h2>${escapeHtml(product.name)}</h2>
         <p class="price">₽${product.price}</p>
-        <p>Бренд: ${product.brand}</p>
+        <p>Бренд: ${escapeHtml(product.brand)}</p>
         <p>Доступные размеры: ${product.sizes.join(', ')}</p>
-        <button class="btn" onclick="addToCart({id: ${product.id}, name: '${product.name}', price: ${product.price}})">Добавить в корзину</button>
-        <button class="btn" style="margin-left: 10px;" onclick="quickCheckout({id: ${product.id}, name: '${product.name}', price: ${product.price}})">Купить сейчас</button>
+        <button class="btn" onclick="addToCart({id: ${product.id}, name: '${escapeHtml(product.name)}', price: ${product.price}})">Добавить в корзину</button>
+        <button class="btn" style="margin-left: 10px;" onclick="quickCheckout({id: ${product.id}, name: '${escapeHtml(product.name)}', price: ${product.price}})">Купить сейчас</button>
     `;
     modal.style.display = 'flex';
 }
@@ -163,7 +177,7 @@ function quickCheckout(product) {
     content.innerHTML = `
         <span class="close-quick-checkout" onclick="closeQuickCheckout()">&times;</span>
         <h2>Быстрое оформление заказа</h2>
-        <p><strong>Товар:</strong> ${product.name}</p>
+        <p><strong>Товар:</strong> ${escapeHtml(product.name)}</p>
         <p><strong>Цена:</strong> ₽${product.price}</p>
         <form id="quick-checkout-form">
             <label>Имя *</label>

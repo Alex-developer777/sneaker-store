@@ -28,12 +28,21 @@
         </div>
     </header>
 
+    <!-- Баннер -->
+    <section class="hero">
+        <div class="container">
+            <h1>Новые кроссовки 2025 года</h1>
+            <p>Стиль, комфорт и качество — в каждой паре</p>
+            <a href="catalog.html" class="btn">Перейти в каталог</a>
+        </div>
+    </section>
+
     <!-- Слайдер -->
     <section class="slider-container">
         <div class="slider">
-            <div class="slide"><img src="images/sneakers.jpg" alt="Слайд 1"></div>
-            <div class="slide"><img src="images/sneakers.jpg" alt="Слайд 2"></div>
-            <div class="slide"><img src="images/sneakers.jpg" alt="Слайд 3"></div>
+            <div class="slide"><img src="images/background.jpg" alt="Слайд 1"></div>
+            <div class="slide"><img src="images/background.jpg" alt="Слайд 2"></div>
+            <div class="slide"><img src="images/background.jpg" alt="Слайд 3"></div>
         </div>
         <button class="slider-btn prev" onclick="prevSlide()">&#10094;</button>
         <button class="slider-btn next" onclick="nextSlide()">&#10095;</button>
@@ -94,7 +103,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
+                navigator.serviceWorker.register('js/sw.js')
                     .then(registration => console.log('SW registered'))
                     .catch(error => console.log('SW registration failed'));
             });
